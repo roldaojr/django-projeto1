@@ -1,0 +1,15 @@
+<table width="100%">
+  <tr>
+    <th>Nome</th>
+    <th>E-mail</th>
+  </tr>
+{% for item in itens %}
+  <tr>
+    <td>{{ item.nome }}</td>
+    <td>{{ item.email }}</td>
+  </tr>
+{% empty %}
+  <tr><td colspan="2" align="center">Lista vazia</td></tr>
+{% endfor %}
+</table>
+<a href="{% url 'contato_adicionar' %}">Adicionar</a>
