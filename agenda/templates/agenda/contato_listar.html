@@ -2,14 +2,19 @@
   <tr>
     <th>Nome</th>
     <th>E-mail</th>
+    <th>Ações</th>
   </tr>
 {% for item in itens %}
   <tr>
     <td>{{ item.nome }}</td>
     <td>{{ item.email }}</td>
+    <td>
+      <a href="{% url 'contato_alterar' item.pk %}">Alterar</a>
+      <a href="{% url 'contato_apagar' item.pk %}">Apagar</a>
+    </td>
   </tr>
 {% empty %}
-  <tr><td colspan="2" align="center">Lista vazia</td></tr>
+  <tr><td colspan="3" align="center">Lista vazia</td></tr>
 {% endfor %}
 </table>
 <a href="{% url 'contato_adicionar' %}">Adicionar</a>

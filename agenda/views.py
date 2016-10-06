@@ -27,3 +27,24 @@ def adicionar(request):
     else:
         form = ContatoForm()
     return render(request, 'agenda/contato_form.html', {'form': form})
+
+
+def alterar(request, pk):
+    contato = Contato.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = ContatoForm(request.POST, instance=contato)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('contato_listar'))
+    else:
+        form = ContatoForm(instance=contato)
+    return render(request, 'agenda/contato_form.html', {'form': form})
+
+
+def apagar(request, pk):
+    contato = Contato.objects.get(pk=pk)
+    if request.method == 'POST':
+        contato.delete()
+        return redirect(reverse('contato_listar'))
+
+    return render(request, 'agenda/contato_apagar.html', {'contato': contato})
