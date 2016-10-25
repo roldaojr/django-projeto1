@@ -1,6 +1,9 @@
+{% extends 'layout.html' %}
+{% block conteudo %}
 <form method="post">{% csrf_token %}
 <p>
    Deseja realmente apagar {{ contato.nome }}?
 </p>
 <input type="submit" value="Apagar">
 </form>
+{% endblock %}
